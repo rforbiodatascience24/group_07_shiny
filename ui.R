@@ -1,3 +1,12 @@
+# Load needed libraries
+library("shiny")
+library("bslib")
+library("ggplot2")
+library("stringr")
+
+# Load needed functions
+source(file = "app_functions.R")
+
 # User Interface
 ui <- fluidPage(
   titlePanel("Virtual Central Dogma"),

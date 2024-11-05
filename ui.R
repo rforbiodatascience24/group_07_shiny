@@ -1,34 +1,42 @@
-
-# Load needed libraries
-library("shiny")
-library("bslib")
-
+# User Interface
 ui <- fluidPage(
-  titlePanel("Virtual Central Dogma Simulator"),
-
+  titlePanel("Virtual Central Dogma"),
   sidebarLayout(
     sidebarPanel(
-      h3("DNA Sequence Generation"),
-      sliderInput("n_bases", "Number of Bases:", min = 3, max = 300, value = 30, step = 3),
-      numericInput("prob_A", "Probability of A", value = 0.25, min = 0, max = 1, step = 0.01),
-      numericInput("prob_T", "Probability of T", value = 0.25, min = 0, max = 1, step = 0.01),
-      numericInput("prob_C", "Probability of C", value = 0.25, min = 0, max = 1, step = 0.01),
-      numericInput("prob_G", "Probability of G", value = 0.25, min = 0, max = 1, step = 0.01),
-      actionButton("generate_dna", "Generate DNA Sequence")
+      sliderInput(inputId = "n_bases",
+                  label = "Number of bases:",
+                  min = 1,
+                  max = 60,
+                  value = 30),
+      numericInput(inputId = "frq_a",
+                   label = "Frequency of A:",
+                   min = 0,
+                   max = 1,
+                   value = 0.25),
+      numericInput(inputId = "frq_t",
+                   label = "Frequency of T:",
+                   min = 0,
+                   max = 1,
+                   value = 0.25),
+      numericInput(inputId = "frq_c",
+                   label = "Frequency of C:",
+                   min = 0,
+                   max = 1,
+                   value = 0.25),
+      numericInput(inputId = "frq_g",
+                   label = "Frequency of G:",
+                   min = 0,
+                   max = 1,
+                   value = 0.25)
     ),
-
     mainPanel(
-      h3("DNA Sequence Output"),
-      verbatimTextOutput("dna_output"),
-
-      h3("RNA Transcription"),
-      verbatimTextOutput("rna_output"),
-
-      h3("Protein Translation"),
-      verbatimTextOutput("protein_output"),
-
-      h3("Base Frequency Plot"),
-      plotOutput("base_freq_plot")
+      h6("DNA sequence"),
+      verbatimTextOutput(outputId = "dna"),
+      h6("RNA sequence"),
+      verbatimTextOutput(outputId = "rna"),
+      h6("Amino Acid Sequence"),
+      verbatimTextOutput(outputId = "aa"),
+      plotOutput(outputId = "aa_frequency")
     )
   )
 )

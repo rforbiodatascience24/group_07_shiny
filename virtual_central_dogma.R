@@ -1,5 +1,6 @@
 # Load needed libraries
-library("PACKAGE_NAME")
+library("shiny")
+library("bslib")
 
 # Load needed functions
 source(file = "app_functions.R")

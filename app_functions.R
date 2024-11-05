@@ -1,3 +1,9 @@
+# Load needed libraries
+library("shiny")
+library("bslib")
+library("ggplot2")
+library("stringr")
+
 # Define the "Virtual Gene"-function
 gene_dna <- function(length, frq_a, frq_t, frq_c, frq_g) {
   if (length %% 3 != 0) {
